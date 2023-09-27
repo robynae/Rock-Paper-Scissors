@@ -2,6 +2,7 @@ let playerSelection;
 let computerSelection;
 let playerScore = 0;
 let computerScore = 0;
+let playAgainAsk;
 
 function getComputerChoice() {
     let number = Math.floor(Math.random() * 3) + 1;
@@ -48,10 +49,16 @@ function game() {
         console.log(playRound(playerSelection, getComputerChoice()));
     }
     if (playerScore > computerScore) {
-        return "Hurray! You've won it all!";
+        resetScore();
+        return `Hurray! You've won it all!`;
     } else {
-        return "You've lost. Better luck next time."
+        resetScore();
+        return `You've lost. Better luck next time.`;
     }
-    playerScore = 0;
-    computerScore = 0;
 }
+
+function resetScore() {
+    playerScore -= playerScore;
+    computerScore -= computerScore;
+}
+
